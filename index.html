@@ -5,18 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TVBS《頂級饗宴．極致尋味錄》官方網站 ｜ 盛大籌備中</title>
     <style>
-        /* 基礎重置與頂級美學配色 */
+        /* --- 頂級奢華視覺重置 --- */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: "PingFang TC", "Heiti TC", "Microsoft JhengHei", sans-serif;
+            font-family: "Cinzel", "PingFang TC", "Heiti TC", "Noto Serif TC", serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: #0a0a0a;
-            color: #e5e5e5;
-            line-height: 1.7;
+            background-color: #050505;
+            color: #f5f5f5;
+            line-height: 1.8;
             overflow-x: hidden;
         }
 
@@ -25,404 +29,662 @@
             color: inherit;
         }
 
-        /* 奢華金色與暗色調設定 */
+        /* --- 奢華金屬與曜石黑配色變數 --- */
         :root {
+            --gold-gradient: linear-gradient(135deg, #d4af37 0%, #856620 100%);
+            --gold-light: #f3dca3;
             --gold-primary: #c5a059;
-            --gold-secondary: #e5c185;
-            --bg-card: #141414;
-            --bg-body: #0a0a0a;
-            --text-muted: #aaaaaa;
-            --border-color: #262626;
+            --bg-dark-matte: #0c0c0c;
+            --bg-card: #121212;
+            --border-glow: rgba(197, 160, 89, 0.15);
+            --tvbs-red: #e60012;
         }
 
-        /* 全局通用元件 */
+        /* --- 全局精緻元件 --- */
         .container {
             width: 90%;
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 60px 0;
+            padding: 80px 0;
         }
 
+        /* 漸層金屬標題 */
         .section-title {
             text-align: center;
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: 4px;
-            color: #ffffff;
+            font-size: 2.6rem;
+            font-weight: 800;
+            letter-spacing: 6px;
+            background: linear-gradient(135deg, #ffffff 30%, #c5a059 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 15px;
-            position: relative;
+            text-transform: uppercase;
         }
 
         .section-title::after {
             content: '';
             display: block;
-            width: 60px;
-            height: 2px;
-            background: var(--gold-primary);
-            margin: 15px auto 0;
+            width: 80px;
+            height: 3px;
+            background: var(--gold-gradient);
+            margin: 20px auto 0;
+            border-radius: 2px;
         }
 
         .section-subtitle {
             text-align: center;
             font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 50px;
-            letter-spacing: 2px;
+            color: #888888;
+            margin-bottom: 60px;
+            letter-spacing: 3px;
+            font-weight: 300;
         }
 
-        /* 導覽列 */
+        /* --- 磨砂玻璃導覽列 --- */
         header {
-            background-color: rgba(10, 10, 10, 0.95);
-            border-bottom: 1px solid var(--border-color);
+            background-color: rgba(5, 5, 5, 0.85);
+            border-bottom: 1px solid var(--border-glow);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
         }
 
         .nav-container {
             width: 90%;
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
-            height: 80px;
+            height: 90px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: 2px;
+            font-size: 1.6rem;
+            font-weight: 900;
+            letter-spacing: 3px;
             color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo .brand-badge {
+            background-color: var(--tvbs-red);
+            color: white;
+            font-size: 0.75rem;
+            padding: 2px 6px;
+            font-weight: 900;
+            border-radius: 2px;
         }
 
         .logo span {
-            color: var(--gold-primary);
+            background: linear-gradient(135deg, #fff, var(--gold-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 40px;
         }
 
         .nav-item a {
             font-size: 1rem;
-            letter-spacing: 1px;
-            transition: color 0.3s;
+            letter-spacing: 2px;
+            color: #aaaaaa;
+            transition: all 0.4s ease;
+            font-weight: 500;
         }
 
         .nav-item a:hover {
-            color: var(--gold-primary);
+            color: var(--gold-light);
+            text-shadow: 0 0 10px rgba(197, 160, 89, 0.4);
         }
 
-        /* Hero 視覺區塊 */
+        /* --- Hero 電影感視覺區塊 --- */
         .hero-section {
             height: 100vh;
-            min-height: 650px;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(10,10,10,1)), 
+            min-height: 800px;
+            background: linear-gradient(rgba(5,5,5,0.2), rgba(5,5,5,1)), 
                         url('https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1920') no-repeat center center/cover;
             display: flex;
             align-items: center;
             text-align: center;
-            padding-top: 80px;
+            position: relative;
         }
 
         .hero-content {
             width: 100%;
+            z-index: 10;
         }
 
         .badge-status {
             display: inline-block;
             border: 1px solid var(--gold-primary);
-            color: var(--gold-primary);
-            padding: 6px 20px;
-            font-size: 0.9rem;
+            color: var(--gold-light);
+            padding: 8px 25px;
+            font-size: 0.95rem;
             font-weight: 600;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 25px;
-            background-color: rgba(197, 160, 89, 0.1);
-            border-radius: 2px;
-            animation: pulse 2s infinite;
+            letter-spacing: 6px;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, rgba(197,160,89,0.1), rgba(0,0,0,0.4));
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.2);
+            animation: pulse Glow 2.5s infinite alternate;
         }
 
-        @keyframes pulse {
-            0% { opacity: 0.8; }
-            50% { opacity: 1; border-color: var(--gold-secondary); color: var(--gold-secondary); }
-            100% { opacity: 0.8; }
+        @keyframes Glow {
+            0% { box-shadow: 0 0 15px rgba(197, 160, 89, 0.1); border-color: rgba(197, 160, 89, 0.4); }
+            100% { box-shadow: 0 0 30px rgba(197, 160, 89, 0.4); border-color: var(--gold-secondary); }
         }
 
         .hero-title {
-            font-size: 3.5rem;
-            font-weight: 800;
-            letter-spacing: 8px;
+            font-size: 4.5rem;
+            font-weight: 900;
+            letter-spacing: 12px;
             color: #ffffff;
-            margin-bottom: 20px;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            margin-bottom: 25px;
+            line-height: 1.3;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.8rem; letter-spacing: 6px; }
         }
 
         .hero-tagline {
-            font-size: 1.3rem;
-            letter-spacing: 4px;
-            color: var(--gold-secondary);
-            margin-bottom: 40px;
+            font-size: 1.4rem;
+            letter-spacing: 6px;
+            color: var(--gold-primary);
+            margin-bottom: 50px;
             font-weight: 300;
         }
 
-        /* 籌備資訊看板 */
+        /* 籌備期精緻資訊看板 */
         .info-panel {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            padding: 40px;
-            border-radius: 4px;
-            max-width: 800px;
+            background: rgba(18, 18, 18, 0.6);
+            border: 1px solid var(--border-glow);
+            padding: 45px;
+            border-radius: 8px;
+            max-width: 900px;
             margin: 0 auto;
             text-align: left;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
         }
 
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            text-align: center;
         }
 
         @media (max-width: 768px) {
-            .info-grid { grid-template-columns: 1fr; }
-            .hero-title { font-size: 2.5rem; }
+            .info-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
         }
 
         .info-item h4 {
             color: var(--gold-primary);
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-            letter-spacing: 1px;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            font-weight: 400;
         }
 
         .info-item p {
             color: #ffffff;
-            font-size: 1.3rem;
-            font-weight: 600;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
-        /* 五城美食區塊 */
+        /* --- 節目三大奢華亮點區塊 --- */
+        .feature-section {
+            background-color: var(--bg-dark-matte);
+            border-top: 1px solid var(--border-glow);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        @media (max-width: 992px) {
+            .feature-grid { grid-template-columns: 1fr; }
+        }
+
+        .feature-card {
+            background: #111111;
+            border: 1px solid #1c1c1c;
+            padding: 40px 30px;
+            border-radius: 6px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--gold-primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.05);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--gold-primary);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .feature-card p {
+            color: #888888;
+            font-size: 0.95rem;
+        }
+
+        /* --- 頂級巨星特輯橫幅區塊 (多元吸引人焦點) --- */
+        .star-teaser-section {
+            background: linear-gradient(135deg, #16120a 0%, #050505 100%);
+            border-top: 1px solid var(--border-glow);
+            border-bottom: 1px solid var(--border-glow);
+        }
+
+        .star-teaser-container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        @media (max-width: 992px) {
+            .star-teaser-container { flex-direction: column; text-align: center; }
+        }
+
+        .star-teaser-text {
+            flex: 1;
+        }
+
+        .star-teaser-text h2 {
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+        }
+
+        .star-teaser-text p {
+            color: #cccccc;
+            font-size: 1.1rem;
+            margin-bottom: 35px;
+            max-width: 650px;
+        }
+
+        .star-wall {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            width: 100%;
+        }
+
+        .star-badge-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 20px 10px;
+            text-align: center;
+            border-radius: 4px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--gold-light);
+            transition: all 0.3s;
+        }
+
+        .star-badge-card:hover {
+            background: var(--gold-gradient);
+            color: #050505;
+            transform: scale(1.05);
+        }
+
+        .cta-btn-gold {
+            display: inline-block;
+            background: var(--gold-gradient);
+            color: #050505;
+            padding: 15px 40px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(197,160,89,0.3);
+        }
+
+        .cta-btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(197,160,89,0.5);
+            background: linear-gradient(135deg, #e5c185 0%, #a07d32 100%);
+        }
+
+        /* --- 五城奢華美食地圖區塊 --- */
         .city-section {
-            background-color: var(--bg-body);
+            background-color: #050505;
         }
 
         .grid-cities {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 20px;
+            gap: 35px;
         }
 
-        @media (max-width: 992px) {
-            .grid-cities { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 768px) {
-            .grid-cities { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 1100px) { .grid-cities { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .grid-cities { grid-template-columns: 1fr; } }
 
         .city-card {
             background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
+            border: 1px solid #1a1a1a;
+            border-radius: 6px;
             overflow: hidden;
-            transition: transform 0.4s, border-color 0.4s;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .city-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
             border-color: var(--gold-primary);
+            box-shadow: 0 20px 40px rgba(197, 160, 89, 0.15);
         }
 
         .city-img {
-            height: 220px;
+            height: 240px;
             background-size: cover;
             background-position: center;
             position: relative;
+            transition: all 0.5s ease;
+        }
+
+        .city-card:hover .city-img {
+            transform: scale(1.03);
         }
 
         .city-badge {
             position: absolute;
             top: 20px;
             left: 20px;
-            background-color: rgba(10, 10, 10, 0.85);
-            border-left: 3px solid var(--gold-primary);
-            padding: 5px 15px;
-            font-size: 0.9rem;
-            font-weight: 700;
+            background-color: rgba(5, 5, 5, 0.9);
+            border-left: 4px solid var(--gold-primary);
+            padding: 6px 18px;
+            font-size: 0.85rem;
+            font-weight: 800;
             letter-spacing: 2px;
+            backdrop-filter: blur(5px);
+        }
+
+        .star-owned-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--tvbs-red);
+            color: #ffffff;
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-radius: 2px;
         }
 
         .city-info {
-            padding: 25px;
+            padding: 30px;
         }
 
         .restaurant-name {
-            font-size: 1.4rem;
-            font-weight: 700;
+            font-size: 1.5rem;
+            font-weight: 800;
             color: #ffffff;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
+            letter-spacing: 1px;
         }
 
         .restaurant-meta {
             font-size: 0.9rem;
             color: var(--gold-primary);
-            margin-bottom: 15px;
-            font-weight: 500;
+            margin-bottom: 18px;
+            font-weight: 600;
             letter-spacing: 1px;
         }
 
         .restaurant-desc {
             font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 20px;
+            color: #999999;
+            margin-bottom: 25px;
             text-align: justify;
+            height: 75px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+
+        .tag-container {
+            margin-bottom: 20px;
         }
 
         .highlight-tag {
             display: inline-block;
-            background-color: #1e1e1e;
-            padding: 4px 12px;
-            border-radius: 2px;
-            font-size: 0.85rem;
-            color: #dddddd;
+            background-color: #181818;
+            padding: 5px 14px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: #cccccc;
             margin-right: 8px;
             margin-bottom: 8px;
-            border: 1px solid #2d2d2d;
+            border: 1px solid #262626;
+            font-weight: 500;
         }
 
-        /* 聯絡與期待訂閱區 */
+        .card-link {
+            display: inline-block;
+            color: var(--gold-primary);
+            font-size: 0.9rem;
+            font-weight: 700;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s;
+            padding-bottom: 2px;
+        }
+
+        .city-card:hover .card-link {
+            color: var(--gold-light);
+            border-color: var(--gold-light);
+        }
+
+        /* --- 頂級饕客情報訂閱區區塊 --- */
         .subscribe-section {
-            background: linear-gradient(rgba(10,10,10,0.9), rgba(10,10,10,0.9)),
+            background: linear-gradient(rgba(5,5,5,0.92), rgba(5,5,5,0.92)),
                         url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1920') no-repeat center center/cover;
-            border-top: 1px solid var(--border-color);
+            border-top: 1px solid var(--border-glow);
             text-align: center;
         }
 
         .sub-container {
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto;
         }
 
         .sub-title {
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: #ffffff;
             margin-bottom: 15px;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            font-weight: 700;
         }
 
         .sub-desc {
-            color: var(--text-muted);
-            margin-bottom: 30px;
+            color: #888888;
+            margin-bottom: 40px;
             font-size: 1rem;
+            letter-spacing: 1px;
         }
 
         .form-group {
             display: flex;
-            gap: 10px;
+            gap: 12px;
         }
+
+        @media (max-width: 576px) { .form-group { flex-direction: column; } }
 
         .form-input {
             flex: 1;
-            background-color: rgba(25, 25, 25, 0.8);
-            border: 1px solid var(--border-color);
-            padding: 15px 20px;
+            background-color: rgba(20, 20, 20, 0.8);
+            border: 1px solid #2d2d2d;
+            padding: 18px 25px;
             color: #ffffff;
             font-size: 1rem;
-            border-radius: 2px;
+            border-radius: 4px;
             outline: none;
-            transition: border-color 0.3s;
+            transition: all 0.3s;
         }
 
         .form-input:focus {
             border-color: var(--gold-primary);
+            box-shadow: 0 0 15px rgba(197, 160, 89, 0.2);
         }
 
         .form-btn {
-            background-color: var(--gold-primary);
-            color: #0a0a0a;
+            background: var(--gold-gradient);
+            color: #050505;
             border: none;
-            padding: 0 30px;
+            padding: 0 40px;
             font-size: 1rem;
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             cursor: pointer;
-            border-radius: 2px;
-            transition: background-color 0.3s;
+            border-radius: 4px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(197,160,89,0.2);
         }
 
         .form-btn:hover {
-            background-color: var(--gold-secondary);
+            background: linear-gradient(135deg, #e5c185 0%, #a07d32 100%);
         }
 
-        /* 頁尾 */
+        /* --- 頁尾 --- */
         footer {
-            background-color: #050505;
-            padding: 40px 0;
+            background-color: #020202;
+            padding: 50px 0;
             border-top: 1px solid var(--border-color);
             text-align: center;
-            font-size: 0.9rem;
-            color: #666666;
+            font-size: 0.85rem;
+            color: #555555;
             letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
 
+    <!-- 磨砂玻璃導覽列 -->
     <header>
         <div class="nav-container">
-            <div class="logo">TVBS <span>頂級饗宴</span></div>
+            <div class="logo"><div class="brand-badge">TVBS</div><span>頂級饗宴</span></div>
             <ul class="nav-menu">
-                <li class="nav-item"><a href="#">首頁</a></li>
+                <li class="nav-item"><a href="#">首頁精選</a></li>
+                <li class="nav-item"><a href="#features">節目亮點</a></li>
+                <li class="nav-item"><a href="#stars">巨星特輯</a></li>
                 <li class="nav-item"><a href="#cities">五城地圖</a></li>
-                <li class="nav-item"><a href="#production">節目公告</a></li>
-                <li class="nav-item"><a href="#subscribe">搶先訂閱</a></li>
             </ul>
         </div>
     </header>
 
+    <!-- Hero 電影感大視覺區塊 -->
     <section class="hero-section">
         <div class="hero-content container">
-            <span class="badge-status">盛大籌備中 ｜ IN PRODUCTION</span>
+            <span class="badge-status">年底隆重開播 ｜ GRAND INITIAL AT YEAR-END</span>
             <h1 class="hero-title">頂級饗宴．極致尋味錄</h1>
-            <p class="hero-tagline">用一道料理，定義一座城市的奢華高度</p>
+            <p class="hero-tagline">全台首檔 4K 電影級餐飲美學巨作</p>
             
-            <div class="info-panel" id="production">
+            <!-- 籌備期精緻看板 -->
+            <div class="info-panel">
                 <div class="info-grid">
                     <div class="info-item">
-                        <h4>預計開播時程</h4>
-                        <p>2026 年底 隆重登場</p>
+                        <h4>開播時程</h4>
+                        <p style="color: var(--gold-light);">2026 年底</p>
                     </div>
                     <div class="info-item">
-                        <h4>節目影像規格</h4>
-                        <p>4K 頂級電影感雙機編制</p>
+                        <h4>影像編制</h4>
+                        <p>雙機 4K 電影級</p>
                     </div>
                     <div class="info-item">
-                        <h4>首播專屬頻道</h4>
-                        <p>TVBS 56 頻道 ＆ 數位同步</p>
+                        <h4>覆蓋城市</h4>
+                        <p>全台 5 大核心區</p>
                     </div>
                     <div class="info-item">
-                        <h4>單元企劃核心</h4>
-                        <p>深度解密星級主廚與極致風土</p>
+                        <h4>核心宗旨</h4>
+                        <p>極致感官巡禮</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- 節目三大奢華亮點區 -->
+    <section class="feature-section" id="features">
+        <div class="container">
+            <h2 class="section-title">多元視角 ｜ 重新定義頂級餐飲</h2>
+            <p class="section-subtitle">打破傳統美食報導框架，帶您展開三大感官探索</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>主廚靈魂與極致工藝</h3>
+                    <p>深入米其林星級與無菜單私廚廚房後台，以微距鏡頭紀錄職人對一毫米火候、一滴醬汁的偏執追求。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>空間美學與光影儀式</h3>
+                    <p>不僅滿足味蕾，我們更解密高空天際線、低調奢華日式板前與私密頂樓秘境的空間構造美學。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🍷</div>
+                    <h3>在地風土的當代翻玩</h3>
+                    <p>看國際大師如何將台灣在地小吃、傳統食材，透過西方前衛Fine Dining技法進行令人驚嘆的解構重組。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 巨星特輯橫幅區 (多元吸引人焦點) -->
+    <section class="star-teaser-section" id="stars">
+        <div class="container star-teaser-container">
+            <div class="star-teaser-text">
+                <h2 style="background: linear-gradient(135deg, #fff, #c5a059); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">重磅企劃：巨星私房飯局牆</h2>
+                <p>我們帶您潛入全台天王天后、金曲歌后私下指定的隱密愛店。在這些指標餐廳用餐，品嚐絕美料理的同時，隨時有機會與演藝圈頂級大來賓浪漫驚喜巧遇！</p>
+                <a href="interview.html" class="cta-btn-gold">解密巨星足跡專訪 →</a>
+            </div>
+            <div class="star-wall">
+                <div class="star-badge-card">周杰倫</div>
+                <div class="star-badge-card">小 S</div>
+                <div class="star-badge-card">鄧紫棋</div>
+                <div class="star-badge-card">徐懷鈺</div>
+                <div class="star-badge-card">葉倩文</div>
+                <div class="star-badge-card">梁詠琪</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 五城美食指標地圖區 -->
     <section class="city-section" id="cities">
         <div class="container">
             <h2 class="section-title">五城星徽 ｜ 奢華尋味地圖</h2>
-            <p class="section-subtitle">搶先解密首季攝製計畫中，引領城市味蕾高度的極致陣容</p>
+            <p class="section-subtitle">精選全台五大城市引領味蕾高度的極致陣容</p>
             
             <div class="grid-cities">
+                <!-- 台北 -->
                 <div class="city-card">
                     <div class="city-img" style="background-image: url('https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?q=80&w=600');">
                         <div class="city-badge">TAIPEI 台北</div>
@@ -430,14 +692,16 @@
                     <div class="city-info">
                         <div class="restaurant-name">Taïrroir 態芮</div>
                         <div class="restaurant-meta">米其林三星 ｜ 現代台灣料理</div>
-                        <p class="restaurant-desc">將深厚的法式料理技法化作骨幹，完美拆解並重組台灣經典的日常風味，以摩登優雅的手法翻玩出極致的三星藝術饗宴。</p>
-                        <div>
+                        <p class="restaurant-desc">將深厚的法式料理技法化作骨幹，完美拆解並重組台灣經典的日常風味，翻玩出極致的三星藝術饗宴。</p>
+                        <div class="tag-container">
                             <span class="highlight-tag">文化解構</span>
                             <span class="highlight-tag">極致三星</span>
                         </div>
+                        <span class="card-link">精彩攝製中 預計年底登場 ➔</span>
                     </div>
                 </div>
 
+                <!-- 新北 -->
                 <div class="city-card">
                     <div class="city-img" style="background-image: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=600');">
                         <div class="city-badge">NEW TAIPEI 新北</div>
@@ -445,29 +709,51 @@
                     <div class="city-info">
                         <div class="restaurant-name">旨醞鐵板料理</div>
                         <div class="restaurant-meta">38樓高空 ｜ 無菜單鐵板割烹</div>
-                        <p class="restaurant-desc">坐擁38樓無敵天際線景致。主廚運用純熟的精準火候與細膩調味，將當季珍稀海鮮與頂級和牛，化為舌尖上的奢華交響樂。</p>
-                        <div>
+                        <p class="restaurant-desc">坐擁38樓無敵天際線景致。主廚運用純熟的精準火候與細膩調味，將頂級海陸化為舌尖上的奢華交響樂。</p>
+                        <div class="tag-container">
                             <span class="highlight-tag">高空美景</span>
                             <span class="highlight-tag">頂級海陸</span>
                         </div>
+                        <span class="card-link">精彩攝製中 預計年底登場 ➔</span>
                     </div>
                 </div>
 
+                <!-- 桃園：鮨吾七 -->
                 <div class="city-card">
                     <div class="city-img" style="background-image: url('https://images.unsplash.com/photo-1611143669185-af224c5e3252?q=80&w=600');">
                         <div class="city-badge">TAOYUAN 桃園</div>
                     </div>
                     <div class="city-info">
                         <div class="restaurant-name">鮨吾七</div>
-                        <div class="restaurant-meta">預約制 ｜ 江戶前板前割烹</div>
-                        <p class="restaurant-desc">中壢極致隱密的頂級 Omakase 指標。職人主廚嚴選每週自日本空運的珍稀漁獲，透過精湛的熟成手藝，將每一貫壽司雕琢如珠寶。</p>
-                        <div>
+                        <div class="restaurant-meta">完全預約制 ｜ 江戶前割烹日料</div>
+                        <p class="restaurant-desc">中壢極致隱密的頂級無菜單日料。職人主廚嚴選日本空運漁獲，以極致熟成手藝，將每貫壽司雕琢如珠寶。</p>
+                        <div class="tag-container">
                             <span class="highlight-tag">隱密尊榮</span>
                             <span class="highlight-tag">日本空運</span>
                         </div>
+                        <span class="card-link">精彩攝製中 預計年底登場 ➔</span>
                     </div>
                 </div>
 
+                <!-- 桃園：樂福利餐酒館 (新增強打) -->
+                <div class="city-card" style="border: 1px solid rgba(197, 160, 89, 0.4);">
+                    <div class="city-img" style="background-image: url('https://images.unsplash.com/photo-1554679665-f5537f187268?q=80&w=600');">
+                        <div class="city-badge">TAOYUAN 桃園</div>
+                        <div class="star-owned-badge">巨星指名★</div>
+                    </div>
+                    <div class="city-info">
+                        <div class="restaurant-name">樂福利餐酒館</div>
+                        <div class="restaurant-meta">台法美學 ｜ 當代摩登現代料理</div>
+                        <p class="restaurant-desc">深耕桃園的奢華台法現代料理。主廚巧妙將台式傳統小吃風味與精緻法餐揉合，是無數港台巨星私下愛訪的飯局首選。</p>
+                        <div class="tag-container">
+                            <span class="highlight-tag">巨星私廚</span>
+                            <span class="highlight-tag">翻玩台味</span>
+                        </div>
+                        <a href="interview.html" class="card-link" style="color: var(--gold-light);">點此查看獨家巨星專訪特輯 ➔</a>
+                    </div>
+                </div>
+
+                <!-- 台中 -->
                 <div class="city-card">
                     <div class="city-img" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=600');">
                         <div class="city-badge">TAICHUNG 台中</div>
@@ -476,13 +762,15 @@
                         <div class="restaurant-name">JL Studio</div>
                         <div class="restaurant-meta">米其林三星 ｜ 當代新加坡料理</div>
                         <p class="restaurant-desc">以宏大的現代料理視角，融合台灣在地頂級食材，大膽顛覆與重新闡述南洋傳統小販經典，展現大氣前衛的三星美學殿堂。</p>
-                        <div>
+                        <div class="tag-container">
                             <span class="highlight-tag">南洋美學</span>
                             <span class="highlight-tag">前衛大氣</span>
                         </div>
+                        <span class="card-link">精彩攝製中 預計年底登場 ➔</span>
                     </div>
                 </div>
 
+                <!-- 嘉義 -->
                 <div class="city-card">
                     <div class="city-img" style="background-image: url('https://images.unsplash.com/photo-1543007630-9710e4a00a20?q=80&w=600');">
                         <div class="city-badge">CHIAYI 嘉義</div>
@@ -491,31 +779,33 @@
                         <div class="restaurant-name">ROOF 私廚小酒館</div>
                         <div class="restaurant-meta">高空秘境 ｜ 預約制法式私廚</div>
                         <p class="restaurant-desc">隱身頂樓的極致私密餐景。主廚將精緻法式 Fine Dining 技法深植於嘉義風土食材，伴隨著夕陽餘暉，昇華為極具詩意的生活儀式。</p>
-                        <div>
+                        <div class="tag-container">
                             <span class="highlight-tag">高空夕陽</span>
                             <span class="highlight-tag">私密預約</span>
                         </div>
+                        <span class="card-link">精彩攝製中 預計年底登場 ➔</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="subscribe-section" id="subscribe">
+    <!-- 期待度訂閱區塊 -->
+    <section class="subscribe-section">
         <div class="container sub-container">
-            <h2 class="sub-title">第一手饕客情報 ｜ 搶先掌握</h2>
-            <p class="sub-desc">留下您的電子信箱，我們將在年底開播前，為您奉上「主廚私房隱藏菜單」與節目限定獨家 VIP 禮遇通知。</p>
+            <h2 class="sub-title">第一手奢華密探情報 ｜ 搶先解鎖</h2>
+            <p class="sub-desc">留下您的電子信箱，我們將在年底開播前，第一時間為您奉上節目精選餐廳的「VIP隱藏版菜單與搶先保留席」通知。</p>
             <form class="form-group" onsubmit="event.preventDefault(); alert('感謝您的訂閱！我們將在開播前第一時間與您分享頂級饗宴情報。');">
                 <input type="email" class="form-input" placeholder="請輸入您的電子信箱" required>
-                <button type="submit" class="form-btn">期待開播</button>
+                <button type="submit" class="form-btn">期待年底開播</button>
             </form>
         </div>
     </section>
 
+    <!-- 頁尾 -->
     <footer>
         <p>© 2026 TVBS 聯利媒體股份有限公司. All Rights Reserved. 《頂級饗宴．極致尋味錄》節目籌備小組專用網頁</p>
     </footer>
 
 </body>
 </html>
-
