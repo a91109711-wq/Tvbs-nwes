@@ -175,7 +175,7 @@
             background: linear-gradient(90deg, rgba(197,160,89,0.1), rgba(0,0,0,0.4));
             border-radius: 4px;
             box-shadow: 0 0 20px rgba(197, 160, 89, 0.2);
-            animation: pulse Glow 2.5s infinite alternate;
+            animation: Glow 2.5s infinite alternate;
         }
 
         @keyframes Glow {
@@ -293,7 +293,7 @@
             font-size: 0.95rem;
         }
 
-        /* --- 頂級巨星特輯橫幅區塊 (多元吸引人焦點) --- */
+        /* --- 頂級巨星特輯橫幅區塊 --- */
         .star-teaser-section {
             background: linear-gradient(135deg, #16120a 0%, #050505 100%);
             border-top: 1px solid var(--border-glow);
@@ -445,7 +445,7 @@
         }
 
         .restaurant-name {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 800;
             color: #ffffff;
             margin-bottom: 6px;
@@ -453,7 +453,7 @@
         }
 
         .restaurant-meta {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--gold-primary);
             margin-bottom: 18px;
             font-weight: 600;
@@ -504,7 +504,7 @@
             border-color: var(--gold-light);
         }
 
-        /* --- 頂級饕客情報訂閱區區塊 --- */
+        /* --- 訂閱區塊 --- */
         .subscribe-section {
             background: linear-gradient(rgba(5,5,5,0.92), rgba(5,5,5,0.92)),
                         url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1920') no-repeat center center/cover;
@@ -578,7 +578,7 @@
         footer {
             background-color: #020202;
             padding: 50px 0;
-            border-top: 1px solid var(--border-color);
+            border-top: 1px solid #1a1a1a;
             text-align: center;
             font-size: 0.85rem;
             color: #555555;
@@ -588,7 +588,6 @@
 </head>
 <body>
 
-    <!-- 磨砂玻璃導覽列 -->
     <header>
         <div class="nav-container">
             <div class="logo"><div class="brand-badge">TVBS</div><span>頂級饗宴</span></div>
@@ -601,14 +600,12 @@
         </div>
     </header>
 
-    <!-- Hero 電影感大視覺區塊 -->
     <section class="hero-section">
         <div class="hero-content container">
             <span class="badge-status">年底隆重開播 ｜ GRAND INITIAL AT YEAR-END</span>
             <h1 class="hero-title">頂級饗宴．極致尋味錄</h1>
             <p class="hero-tagline">全台首檔 4K 電影級餐飲美學巨作</p>
             
-            <!-- 籌備期精緻看板 -->
             <div class="info-panel">
                 <div class="info-grid">
                     <div class="info-item">
@@ -632,7 +629,6 @@
         </div>
     </section>
 
-    <!-- 節目三大奢華亮點區 -->
     <section class="feature-section" id="features">
         <div class="container">
             <h2 class="section-title">多元視角 ｜ 重新定義頂級餐飲</h2>
@@ -658,7 +654,6 @@
         </div>
     </section>
 
-    <!-- 巨星特輯橫幅區 (多元吸引人焦點) -->
     <section class="star-teaser-section" id="stars">
         <div class="container star-teaser-container">
             <div class="star-teaser-text">
@@ -677,14 +672,12 @@
         </div>
     </section>
 
-    <!-- 五城美食指標地圖區 -->
     <section class="city-section" id="cities">
         <div class="container">
             <h2 class="section-title">五城星徽 ｜ 奢華尋味地圖</h2>
             <p class="section-subtitle">精選全台五大城市引領味蕾高度的極致陣容</p>
             
             <div class="grid-cities">
-                <!-- 台北 -->
                 <div class="city-card">
                     <div class="city-img" style="background-image: url('https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?q=80&w=600');">
                         <div class="city-badge">TAIPEI 台北</div>
@@ -701,7 +694,6 @@
                     </div>
                 </div>
 
-                <!-- 新北 -->
                 <div class="city-card">
                     <div class="city-img" style="background-image: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=600');">
                         <div class="city-badge">NEW TAIPEI 新北</div>
@@ -718,7 +710,6 @@
                     </div>
                 </div>
 
-                <!-- 桃園：鮨吾七 -->
                 <div class="city-card">
                     <div class="city-img" style="background-image: url('https://images.unsplash.com/photo-1611143669185-af224c5e3252?q=80&w=600');">
                         <div class="city-badge">TAOYUAN 桃園</div>
@@ -735,7 +726,6 @@
                     </div>
                 </div>
 
-                <!-- 桃園：樂福利餐酒館 (新增強打) -->
                 <div class="city-card" style="border: 1px solid rgba(197, 160, 89, 0.4);">
                     <div class="city-img" style="background-image: url('https://images.unsplash.com/photo-1554679665-f5537f187268?q=80&w=600');">
                         <div class="city-badge">TAOYUAN 桃園</div>
@@ -753,7 +743,6 @@
                     </div>
                 </div>
 
-                <!-- 台中 -->
                 <div class="city-card">
                     <div class="city-img" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=600');">
                         <div class="city-badge">TAICHUNG 台中</div>
@@ -770,7 +759,6 @@
                     </div>
                 </div>
 
-                <!-- 嘉義 -->
                 <div class="city-card">
                     <div class="city-img" style="background-image: url('https://images.unsplash.com/photo-1543007630-9710e4a00a20?q=80&w=600');">
                         <div class="city-badge">CHIAYI 嘉義</div>
@@ -790,7 +778,6 @@
         </div>
     </section>
 
-    <!-- 期待度訂閱區塊 -->
     <section class="subscribe-section">
         <div class="container sub-container">
             <h2 class="sub-title">第一手奢華密探情報 ｜ 搶先解鎖</h2>
@@ -802,7 +789,6 @@
         </div>
     </section>
 
-    <!-- 頁尾 -->
     <footer>
         <p>© 2026 TVBS 聯利媒體股份有限公司. All Rights Reserved. 《頂級饗宴．極致尋味錄》節目籌備小組專用網頁</p>
     </footer>
