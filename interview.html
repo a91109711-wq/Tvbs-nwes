@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TVBS 獨家報導 ｜ 桃園「樂福利餐酒館」巨星足跡特輯</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "PingFang TC", "Heiti TC", "Microsoft JhengHei", sans-serif;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #e5e5e5;
+            line-height: 1.8;
+        }
+
+        :root {
+            --gold-primary: #c5a059;
+            --gold-secondary: #e5c185;
+            --bg-card: #141414;
+            --border-color: #262626;
+            --tvbs-red: #cc0000;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        /* 導覽列 */
+        header {
+            background-color: #0a0a0a;
+            border-bottom: 1px solid var(--border-color);
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--gold-primary);
+        }
+
+        .back-btn {
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+            padding: 8px 20px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            border-color: var(--gold-primary);
+            color: var(--gold-primary);
+        }
+
+        /* 主版面配置：左側星光焦點，右側深度報導 */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 992px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 左側：巨星名人錄看板 */
+        .sidebar-star-panel {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-top: 4px solid var(--gold-primary);
+            padding: 30px;
+            border-radius: 4px;
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .sidebar-tag {
+            background-color: var(--tvbs-red);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-bottom: 15px;
+            border-radius: 2px;
+        }
+
+        .sidebar-title {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .star-list {
+            list-style: none;
+        }
+
+        .star-item {
+            padding: 12px 0;
+            border-bottom: 1px dashed #2d2d2d;
+            font-size: 1.1rem;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .star-item::before {
+            content: '✦';
+            color: var(--gold-primary);
+            margin-right: 12px;
+            font-size: 0.9rem;
+        }
+
+        .chance-box {
+            margin-top: 25px;
+            background: linear-gradient(135deg, #1e1710, #141414);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            padding: 20px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .chance-text {
+            font-size: 0.95rem;
+            color: var(--gold-secondary);
+            font-weight: 700;
+            letter-spacing: 1px;
+            line-height: 1.6;
+        }
+
+        /* 右側：報導內容 */
+        .report-content {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 50px;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .report-content { padding: 30px; }
+        }
+
+        .report-header-badge {
+            color: var(--gold-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .report-main-title {
+            font-size: 2.5rem;
+            color: #ffffff;
+            line-height: 1.4;
+            margin-bottom: 25px;
+            font-weight: 800;
+        }
+
+        .report-meta-info {
+            color: #777777;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        .feature-img {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1200') no-repeat center center/cover;
+            border-radius: 4px;
+            margin-bottom: 35px;
+        }
+
+        .paragraph {
+            font-size: 1.1rem;
+            color: #cccccc;
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        .quote-block {
+            border-left: 4px solid var(--gold-primary);
+            background-color: #1a1a1a;
+            padding: 25px;
+            margin: 35px 0;
+            font-style: italic;
+            color: #ffffff;
+            font-size: 1.15rem;
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* 頁尾 */
+        footer {
+            background-color: #050505;
+            padding: 40px 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666666;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 導覽列 -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">TVBS <span>頂級饗宴</span></div>
+            <a href="index.html" class="back-btn">← 返回首頁</a>
+        </div>
+    </header>
+
+    <!-- 主要內容區 -->
+    <div class="container">
+        <div class="main-layout">
+            
+            <!-- 左上側：巨星名人錄看板 -->
+            <aside class="sidebar-star-panel">
+                <span class="sidebar-tag">TVBS 獨家星光</span>
+                <h3 class="sidebar-title">星光熠熠．巨星足跡</h3>
+                <ul class="star-list">
+                    <li class="star-item">華語天王 ｜ 周杰倫</li>
+                    <li class="star-item">平民天後 ｜ 徐懷鈺</li>
+                    <li class="star-item">綜藝天后 ｜ 小S 徐熙娣</li>
+                    <li class="star-item">傳奇港星 ｜ 葉倩文</li>
+                    <li class="star-item">不老女神 ｜ 梁詠琪</li>
+                    <li class="star-item">鐵肺歌后 ｜ 鄧紫棋</li>
+                </ul>
+                <div class="chance-box">
+                    <p class="chance-text">✨ 尊榮饕客專屬：<br>在此用餐同時，隨時有機會與傳奇大來賓驚喜巧遇！</p>
+                </div>
+            </aside>
+
+            <!-- 右側：深度專訪內容 -->
+            <main class="report-content">
+                <div class="report-header-badge">Exclusive Interview ｜ 獨家專訪</div>
+                <h1 class="report-main-title">解密桃園「樂福利餐酒館」：令台港天王天后流連忘返的台法美學</h1>
+                
+                <div class="report-meta-info">
+                    <span>TVBS 節目籌備小組 編輯部報導</span> ｜ <span>發布日期：2026 年中特輯</span>
+                </div>
+
+                <div class="feature-img"></div>
+
+                <p class="paragraph">
+                    在全台饕客翹首以盼、預計於年底隆重開播的 TVBS 旗艦節目《頂級饗宴．極致尋味錄》中，籌備小組率先為大家揭開一間隱密卻星光爆炸的夢幻名單——位於桃園的<strong>「樂福利餐酒館」</strong>。這裡不但是桃園頂級 Fine Dining 的先驅，更是無數港台巨星下榻、出差或私人聚會時，指名度極高的私房秘密基地。
+                </p>
+
+                <div class="quote-block">
+                    「我們做的是回憶的延伸。用最頂級的法國料理技法，去包裹台灣人從小吃到大的溫暖靈魂。」—— 樂福利主廚兼創辦人
+                </div>
+
+                <p class="paragraph">
+                    走進樂福利，低調沉穩的空間設計與極具隱密性的包廂，正是吸引大牌明星的主因。據內部密探透露，從華語流行天王<strong>周杰倫</strong>、平民天后<strong>徐懷鈺</strong>、到個性直率的綜藝女王<strong>小S</strong>，都曾在此留下優雅的用餐足跡；甚至連遠道而來的香港傳奇天后<strong>葉倩文</strong>、不老女神<strong>梁詠琪</strong>以及鐵肺歌后<strong>鄧紫棋</strong>，都曾對主廚將經典台味（如特製滷肉飯美學、豬血糕元素的法式轉譯）讚不絕口。
+                </p>
+
+                <p class="paragraph">
+                    正是因為這份兼具隱私與極致美味的環境，讓樂福利餐酒館成了名副其實的「巨星捕獲地」。不少饕客在享受頂級熟成鴨胸與頂級酒藏的同時，一轉身便在隔壁桌或貴賓通道與演藝圈頂級大來賓擦肩而過。年底節目開播，TVBS 將帶領全台觀眾，用 4K 電影級鏡頭更深度解密這家連巨星都著迷的舌尖藝術。
+                </p>
+            </main>
+
+        </div>
+    </div>
+
+    <!-- 頁尾 -->
+    <footer>
+        <p>© 2026 TVBS 聯利媒體股份有限公司. All Rights Reserved. 《頂級饗宴．極致尋味錄》節目籌備小組專用網頁</p>
+    </footer>
+
+</body>
+</html>
