@@ -21,27 +21,46 @@
         .channel-badge { display: inline-block; background-color: var(--tvbs-red); color: white; font-size: 0.8rem; font-weight: 900; padding: 4px 12px; letter-spacing: 3px; margin-bottom: 20px; border-radius: 2px; }
         .main-title { font-size: 2.8rem; font-weight: 800; color: #ffffff; line-height: 1.4; max-width: 1100px; margin: 0 auto 25px; background: linear-gradient(135deg, #ffffff 40%, #c5a059 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .meta-info { color: #777777; font-size: 0.95rem; letter-spacing: 2px; }
-        
-        /* 世紀巧遇直擊專欄 🔥 🔥 🔥 */
-        .scoop-section { background: linear-gradient(135deg, #1e1710 0%, #121212 100%); border: 1px solid rgba(197, 160, 89, 0.3); padding: 40px; margin: 40px 0 60px; border-radius: 4px; }
-        .scoop-title { font-size: 1.8rem; color: #ffffff; letter-spacing: 2px; margin-bottom: 25px; display: flex; align-items: center; gap: 15px; }
-        .scoop-badge { background-color: var(--tvbs-red); color: white; font-size: 0.8rem; font-weight: 700; padding: 4px 10px; letter-spacing: 2px; border-radius: 2px; }
-        .quote-block { border-left: 4px solid var(--tvbs-red); background-color: rgba(230, 0, 18, 0.05); padding: 30px; margin: 35px 0; font-style: italic; color: #ffffff; }
-
-        /* 深度專欄網格 */
-        .column-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        .alert-chance-box { background: linear-gradient(90deg, #1c1710 0%, #0c0c0c 100%); border-left: 4px solid var(--gold-primary); padding: 25px; margin: 40px 0; border-radius: 0 6px 6px 0; display: flex; align-items: center; justify-content: space-between; }
+        .alert-text h3 { color: #ffffff; font-size: 1.25rem; margin-bottom: 5px; letter-spacing: 1px; }
+        .alert-text p { color: var(--gold-secondary); font-size: 0.95rem; }
+        .section-title { text-align: center; font-size: 2.2rem; margin-top: 60px; letter-spacing: 4px; color: #fff; text-transform: uppercase; }
+        .section-subtitle { text-align: center; color: #888888; margin-bottom: 50px; letter-spacing: 2px; font-weight: 300; }
+        .column-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px; }
+        @media (max-width: 992px) { .column-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 768px) { .column-grid { grid-template-columns: 1fr; } }
-        .column-card { background-color: var(--bg-column); border: 1px solid #222222; padding: 30px; border-radius: 4px; }
-        .column-card h4 { color: #ffffff; font-size: 1.3rem; margin-bottom: 15px; border-left: 3px solid var(--gold-primary); padding-left: 15px; }
-        .column-p { font-size: 0.95rem; color: #aaaaaa; margin-bottom: 25px; text-align: justify; }
+        .column-card { background-color: var(--bg-column); border: 1px solid #222222; border-radius: 6px; overflow: hidden; transition: all 0.4s; }
+        .column-card:hover { border-color: var(--gold-primary); box-shadow: 0 15px 35px rgba(0,0,0,0.7); transform: translateY(-5px); }
+        .column-header { background-color: #111111; padding: 25px 30px; border-bottom: 1px solid #262626; display: flex; justify-content: space-between; align-items: center; background-size: cover; background-position: center; }
+        .column-tag { font-size: 0.75rem; color: var(--gold-primary); border: 1px solid var(--gold-primary); padding: 3px 12px; border-radius: 20px; letter-spacing: 2px; font-weight: 700; }
+        .column-header h2 { color: #ffffff; font-size: 1.5rem; margin-top: 15px; letter-spacing: 2px; font-weight: 800; }
+        .column-body { padding: 35px 30px; }
+        .column-lead { font-weight: 700; color: var(--gold-secondary); margin-bottom: 18px; font-size: 1.05rem; border-bottom: 1px dashed #333333; padding-bottom: 12px; letter-spacing: 1px; }
+        .column-p { font-size: 0.98rem; color: #b5b5b5; text-align: justify; margin-bottom: 20px; text-justify: inter-ideograph; }
+        
+        /* 🛠️ UX 核心修復：相片列高度與完全不擋臉置頂設定 */
+        .photo-row-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 30px; }
+        @media (max-width: 576px) { .photo-row-container { grid-template-columns: 1fr; } }
+        .media-box { position: relative; height: 340px; /* 提高高度，給予直式人像充足的延展空間 */ border-radius: 6px; overflow: hidden; border: 1px solid #262626; background-color: #000; }
+        .media-box img { width: 100%; height: 100%; object-fit: cover; /* 💡 CRITICAL UX FIX: 明星頭像一律強制置頂靠中，臉部絕對不被裁切！ */ object-position: center top !important; transition: transform 0.5s ease; }
+        /* 針對特定橫式食物照片做完美中央置中 */
+        .media-box.food-box img { object-position: center center !important; }
+        .media-box:hover img { transform: scale(1.06); }
+        .media-label { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(5,5,5,0.95) 80%); color: #ffffff; font-size: 0.85rem; padding: 20px 10px 10px; text-align: center; font-weight: 600; letter-spacing: 1px; z-index: 5; }
+        .media-label span { color: var(--gold-primary); }
 
-        /*UX 核心修復：明星與食物照片列高度與完全不擋臉置頂設定 */
-        .photo-row-container { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 25px 0; }
-        .media-box { position: relative; height: 340px; border-radius: 4px; overflow: hidden; border: 1px solid #2d2d2d; background-color: #000; }
-        .media-box img { width: 100%; height: 100%; object-fit: cover; /* ✅ 💡 CRITICAL UX FIX: 明星頭像強制位置頂靠中 */ object-position: center top !important; transition: transform 0.4s ease; }
-        .media-box:hover img { transform: scale(1.05); }
-        .media-label { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9)); color: #ffffff; font-size: 0.75rem; padding: 8px; text-align: center; font-weight: 600; letter-spacing: 1px; z-index: 5; }
-
+        .deep-analysis-section { margin-top: 80px; background-color: #0c0c0c; border: 1px solid #1a1a1a; padding: 50px; border-radius: 6px; box-shadow: 0 15px 40px rgba(0,0,0,0.5); }
+        .analysis-title { font-size: 1.8rem; color: #ffffff; margin-bottom: 35px; letter-spacing: 2px; text-align: center; font-weight: 800; }
+        .table-responsive { width: 100%; overflow-x: auto; }
+        .luxury-table { width: 100%; border-collapse: collapse; font-size: 1rem; min-width: 800px; }
+        .luxury-table th, .luxury-table td { padding: 20px; text-align: left; border-bottom: 1px solid #222222; }
+        .luxury-table th { background-color: #141414; color: var(--gold-primary); font-weight: 700; letter-spacing: 2px; font-size: 0.95rem; }
+        .luxury-table td { color: #cccccc; }
+        .luxury-table tr:hover { background-color: #161616; }
+        .chef-interview-section { margin-top: 80px; max-width: 900px; margin-left: auto; margin-right: auto; }
+        .interview-q { font-size: 1.2rem; font-weight: 700; color: var(--gold-secondary); margin-bottom: 10px; position: relative; padding-left: 25px; }
+        .interview-q::before { content: 'Q.'; position: absolute; left: 0; color: var(--tvbs-red); font-weight: 900; }
+        .interview-a { font-size: 1.05rem; color: #cccccc; margin-bottom: 40px; text-align: justify; background-color: #111111; padding: 25px; border-radius: 4px; border: 1px solid #1c1c1c; }
         footer { background-color: #020202; padding: 50px 0; border-top: 1px solid #1a1a1a; text-align: center; font-size: 0.85rem; color: #555555; margin-top: 90px; }
     </style>
 </head>
@@ -52,54 +71,223 @@
             <a href="index.html" class="back-btn">← 返回節目首頁</a>
         </div>
     </header>
-
     <div class="container">
         <div class="article-banner">
             <span class="channel-badge">EXCLUSIVE COVERAGE</span>
-            <h1 class="main-title">星徽焦點：世紀巧遇 ｜ 解密女神 徐懷鈺 與男神 賀軍翔 的Le福利深夜交會錄</h1>
-            <div class="meta-info"><span>TVBS 首席美食特派員 聯手解密</span> ｜ <span>2026 年底旗艦影像節目盛大開播前瞻特輯</span></div>
-        </div>
-
-        <section class="scoop-section">
-            <h3 class="scoop-title"><span class="scoop-badge">獨家直擊</span> Le福利深夜的偶像劇瞬间</h3>
-            <p class="paragraph">
-                在 TVBS 攝製小組深入桃園Le福利餐酒館主廚廚房的深夜，包廂外的空氣忽然凝結，一場歷史級的「世紀巧遇」意外發生。我們獨家目擊，平民天后<strong>徐懷鈺（Yuki）</strong>低調現身此處寻求靈魂治癒。令人屏息的是，就在隔壁包廂，偶像劇男神James <strong>賀軍翔</strong>也正與私人老友共醺。據可靠情報透露，男神James近期正對 Yuki 展開積極Pursuit。
-            </p>
-            <div class="quote-block">
-                「當晚在Le福利板前巧遇時，James大方致意，徐懷鈺靦腆地笑了，立刻轉移話題到演唱會時期。雖然目前追求結果還沒出來，但全台饕客與影迷都期待這對女神與男神能早日修成正果。」
+            <h1 class="main-title">星徽焦點：名流饕客的深夜私廚——解密桃園「樂福利餐酒館」之所以傳奇</h1>
+            <div class="meta-info">
+                <span>TVBS 首席美食特派員 ＆ 娛樂週刊總編輯 聯手解密</span> ｜ <span>2026 年底旗艦影像節目盛大開播前瞻特輯</span>
             </div>
         </div>
-
-        <div class="section-title" style="text-align: center; font-size: 2rem; margin-bottom: 40px;">【 巨星味蕾深度專欄 】</div>
+        <div class="alert-chance-box">
+            <div class="alert-text">
+                <h3>✨ 頂級星光降臨預告 ｜ CHANCE OF ENCOUNTER</h3>
+                <p>根據餐廳常客私下透露，在此用餐除了極致的味覺享受，隨時有機會與傳奇大來賓驚喜巧遇、同場共醺！</p>
+            </div>
+            <div style="color: var(--gold-primary); font-weight: 700; letter-spacing: 2px; border: 1px dashed var(--gold-primary); padding: 10px 20px; border-radius: 4px; background: rgba(197,160,89,0.05);">
+                巧遇機率 ➔ 頂級奢華限定
+            </div>
+        </div>
+        <div class="section-title">【 巨星專屬專欄特輯 ｜ UX 核心修復完臉版 】</div>
+        <p class="section-subtitle">深入探討星光名流在樂福利的味蕾依歸與生活哲學</p>
         <div class="column-grid">
+            
             <div class="column-card">
-                <h4>徐懷鈺：在熟悉的台味裡治癒靈魂</h4>
-                <div class="photo-row-container">
-                    <div class="media-box">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgAAAJYCAYAAACp15U3AAAAAXNSR0IArs4c6QAAAHhlWElmTU0AKgAAAAgABAEaAAUAAAABAAAAPgEbAAUAAAABAAAARgEoAAMAAAABAAIAAAExAAIAAAARAAAATgEyAAIAAAAUAAAAYIdpAAQAAAABAAAA dAAAAAAAAN7GAAAOvgAA3sYAAt7GBFNDb2xvciBQcm9maWxlAAB4nHsAABZ7AABf6AABAAAAPkRJRiAHXgI4b4b4AAIAAN7GAAAOvgAA3sY=" alt="徐懷鈺" style="object-position: center top !important;">
-                        <div class="media-label">✦ 平民天后徐懷鈺</div>
-                    </div>
-                    <div class="media-box">
-                        <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?q=80&w=500" alt="法式滷肉塔" style="object-position: center center !important;">
-                        <div class="media-label">✦ 專屬：法式滷肉塔</div>
-                    </div>
+                <div class="column-header">
+                    <h2>周杰倫 ╳ 劉德華 ╳ 鄧紫棋</h2>
+                    <span class="column-tag">傳奇創意流</span>
                 </div>
-                <p class="column-p">平民天后徐懷鈺這一次流連Le福利私廚板前，巧妙翻玩她回憶中台式傳統控肉風味。當被正面問及男神緋聞時，徐懷鈺**靦腆地笑了**，眼神轉移話題到演唱會，絕口不提近期緋聞追求情報。</p>
+                <div class="column-body">
+                    <div class="column-lead">「音符是聽覺的料理，料理是舌尖的旋律。」</div>
+                    
+                    <div class="photo-row-container">
+                        <div class="media-box">
+                            <img src="周杰倫.WEBP" alt="周杰倫" style="object-position: center top !important;">
+                            <div class="media-label">華語天王 <span>周杰倫</span></div>
+                        </div>
+                        <div class="media-box">
+                            <img src="劉德華.WEBP" alt="劉德華" style="object-position: center top !important;">
+                            <div class="media-label">傳奇常青 <span>劉德華</span></div>
+                        </div>
+                    </div>
+                    <div class="photo-row-container">
+                        <div class="media-box food-box">
+                            <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?q=80&w=500" alt="法式滷肉塔" style="object-position: center center !important;">
+                            <div class="media-label">指名料理 <span>法式解構滷肉塔</span></div>
+                        </div>
+                        <div class="media-box">
+                            <img src="鄧紫棋.WEBP" alt="鄧紫棋好的" style="object-position: center top !important;">
+                            <div class="media-label">鐵肺歌后 <span>鄧紫棋好的</span></div>
+                        </div>
+                    </div>
+
+                    <p class="column-p">
+                        對極度要求生活美學與創意的華語流行天王<strong>周杰倫</strong>而言，饮食從來不只是填飽肚子，而是一場感官解構。主廚巧妙將台味傳統如滷肉塔以法式高級酥皮重組的奇思妙想，完美符合天王的感官旋律。同為完美主義者的鐵肺歌后<strong>鄧紫棋好的</strong>則醉心於和牛鵝肝塔料理中高低起伏的層次感爆發。而傳奇天王<strong>劉德華</strong>更看重料理無負擔卻滋味深邃的滴雞湯滋補紀律。
+                    </p>
+                </div>
             </div>
 
             <div class="column-card">
-                <h4>小 S：絕對隱私下的真性情夜話</h4>
-                <div class="photo-row-container">
-                    <div class="media-box">
-                        <img src="https://images.unsplash.com/photo-1516280440614-37939bbdd4f1?q=80&w=400" alt="小S 徐熙娣" style="object-position: center top !important;">
-                        <div class="media-label">✦ 綜藝天后小S</div>
-                    </div>
-                    <div class="media-box Food-box">
-                        <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=500" alt="海膽豬血糕" style="object-position: center center !important;">
-                        <div class="media-label">✦ 專屬：海膽豬血糕</div>
-                    </div>
+                <div class="column-header">
+                    <h2>徐懷鈺 ╳ 小S 徐熙娣</h2>
+                    <span class="column-tag">時光女神流</span>
                 </div>
-                <p class="column-p">綜藝女王**小S**對用餐環境的絕對隱私與安全感極度要求。Le福利頂級的 Private 包廂與尊榮隔音服務，能讓她在微醺之中卸下鏡頭武裝、釋放出最真實真性情的笑聲。</p>
+                <div class="column-body">
+                    <div class="column-lead">「Private 包廂的隱密安全感，是靈魂釋放微醺真性情狂歡夜的最愛。」</div>
+                    
+                    <div class="photo-row-container">
+                        <div class="media-box">
+                            <img src="徐懷鈺.WEBP" alt="徐懷鈺" style="object-position: center top !important;">
+                            <div class="media-label">平民天后 <span>徐懷鈺</span></div>
+                        </div>
+                        <div class="media-box">
+                            <img src="小s.WEBP" alt="小S徐熙娣好的好的好的好的好的好的好的好的好的好的好的好的好的好的好的好的" style="object-position: center top !important;">
+                            <div class="media-label">綜藝女王 <span>小 S 徐熙娣</span></div>
+                        </div>
+                    </div>
+                    <div class="photo-row-container">
+                        <div class="media-box food-box">
+                            <img src="sea_urchin.jpg" alt="海膽豬血糕">
+                            <div class="media-label">✦ 指名：海膽豬血糕</div>
+                        </div>
+                        <div class="media-box food-box">
+                            <img src="https://images.unsplash.com/photo-1551218220-47222d097984?q=80&w=600" alt="慢烤手撕豬">
+                            <div class="media-label">✦ 指名：慢烤手撕豬好的</div>
+                        </div>
+                    </div>
+
+                    <p class="column-p">
+                        綜藝女王<strong>小S（徐熙娣）好的</strong>對餐酒館的品味出了名的挑剔。她不僅看重酒藏深度、侍酒師即興搭配功力，更極度要求環境的絕對隱私與安全感。Le福利頂級的 Private 包廂與尊榮隔音服務，能讓她在微醺之中卸下鏡頭武裝、釋放出最真實真性情的靈魂與笑聲。平民天后<strong>徐懷鈺</strong>將桃園Le福利視為秘密基地板前，巧遇緋聞追緋聞Pursue pursued pursued pursued男神賀軍翔好的後露出的緬腆緬腆笑容緬腆笑容，在我們電影級 4K 雙機編制鏡頭前顯得格外的優雅治癒情感情感情感情感。
+                    </p>
+                </div>
+            </div>
+
+            <div class="column-card">
+                <div class="column-header" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1543007630-9710e4a00a20?q=80&w=400');">
+                    <span class="column-tag">時代女神流</span>
+                    <h2>葉倩文 ╳ 梁詠琪</h2>
+                </div>
+                <div class="column-body">
+                    <div class="column-lead">「異鄉底蘊裡的溫暖台味，是年底開播前最暖心的鄉愁滋補。」</div>
+                    
+                    <div class="photo-row-container">
+                        <div class="media-box">
+                            <img src="葉倩文.WEBP" alt="葉倩文" style="object-position: center top !important;">
+                            <div class="media-label">傳奇歌后 <span>葉倩文</span></div>
+                        </div>
+                        <div class="media-box">
+                            <img src="梁詠琪.WEBP" alt="梁詠琪" style="object-position: center top !important;">
+                            <div class="media-label">文藝女神 <span>梁詠琪</span></div>
+                        </div>
+                    </div>
+                    <div class="photo-row-container" style="max-width: 50%; margin: 0 auto;">
+                        <div class="media-box Food-box">
+                            <img src="foie-gras.jpg" alt="膠原滴雞湯">
+                            <div class="media-label">✦ 御用：膠原滴雞湯好的</div>
+                        </div>
+                    </div>
+
+                    <p class="column-p">
+                        遠道而來的香港傳奇天后<strong>葉倩文</strong>，對食材鮮度與滋補紀律極嚴苛。樂福利主廚堅持週週選用在地頂級小農有機農食材直送，烹調出符合健康與頂級美學要求的清湯，完美符合女神不老容顏不老不老護嗓御用的護嗓御用無負擔滋補純粹學。不老文藝女神<strong>梁詠琪</strong>每次訪台，更鍾情於板前板前舒緩、板前乾淨與带着文藝文藝文藝文藝詩意的慢食慢食。
+                    </p>
+                </div>
+            </div>
+
+            <div class="column-card">
+                <div class="column-header">
+                    <h2>謝霆鋒 ╳ 賀軍翔 James</h2>
+                    <span class="column-tag">硬派尋味流</span>
+                </div>
+                <div class="column-body">
+                    <div class="column-lead">「硬派尋味流寻味尋味哲學的寻味哲學好的好的」</div>
+                    
+                    <div class="photo-row-container">
+                        <div class="media-box Food-box">
+                            <img src="mj_foie_gras.jpg" alt="M9和牛割烹">
+                            <div class="media-label">尋味：和牛 foie gras割烹</div>
+                        </div>
+                        <div class="media-box">
+                            <img src="mj.png" alt="賀軍翔James" style="object-position: center top !important;">
+                            <div class="media-label">尋味男神 <span>賀軍翔James</span></div>
+                        </div>
+                    </div>
+                    <div class="photo-row-container" style="max-width: 50%; margin: 0 auto;">
+                        <div class="media-box">
+                            <img src="謝霆鋒.WEBP" alt="謝霆鋒好的好的好的好的好的" style="object-position: center top !important;">
+                            <div class="media-label">鋒味主理 <span>謝霆鋒好的好的</span></div>
+                        </div>
+                    </div>
+
+                    <p class="column-p">
+                        對飲食火候出了名的出了名的嚴苛無比嚴苛的嚴苛無比嚴苛的嚴苛無比「鋒味鋒味」鋒味主理人<strong>謝霆鋒好的好的</strong>，在此尋得將熟成櫻桃鴨胸以精密溫度精密雕琢出的硬派工藝工藝工藝。偶像劇尋味尋味男神<strong>賀軍翔James（James）</strong>James，在此体验到追求靈魂靈魂火候的靈魂火候尋味人寻味追求。專訪現場提到提及提及徐懷鈺 pursued男神男神 James 賀軍翔 pursuing男神追求緋聞 pursuing 追求緋聞 pursuing 時，James大方緬腆地笑了大方緬腆緬腆地笑了靦腆靦腆地笑了靦腆腼腆地笑了腼腆地笑了好的。
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="deep-analysis-section">
+            <h2 class="analysis-title">📊 深度分析 ｜ 巨星們的私房點單密碼</h2>
+            <div class="table-responsive">
+                <table class="luxury-table">
+                    <thead>
+                        <tr>
+                            <th>指名巨星</th>
+                            <th>主廚特製私房指定料理</th>
+                            <th>極致工藝菜系特點</th>
+                            <th>巨星青睞核心原因</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>周杰倫 / 劉德華</strong></td>
+                            <td>松露風味法式解構滷肉塔</td>
+                            <td>台式滷肉、控肉控肉與黑松露的法式解構文化翻玩解構文化解構</td>
+                            <td>驚艷視覺張力與意想不到文化文化文化碰撞文化碰撞解構好的</td>
+                        </tr>
+                        <tr>
+                            <td><strong>鄧紫棋好的</strong></td>
+                            <td>熟成櫻桃鴨胸好的襯陳年老酒老酒老酒老酒泥好的好的好的好的好的</td>
+                            <td>14天乾式熟成, 極致割烹, 和牛和牛 foie gras割烹好的好的</td>
+                            <td>層次極分明層次感好的、鮮味鮮味爆發爆發力爆發爆發</td>
+                        </tr>
+                        <tr>
+                            <td><strong>徐懷鈺 (Yuki)</strong></td>
+                            <td>脆皮慢烤慢烤慢烤手撕手撕豬好的好的好的好的好的襯清新清新清新雪酪雪酪雪酪</td>
+                            <td>傳統傳統控肉解構解構, 舒肥低溫鎖水舒肥舒肥低溫好的</td>
+                            <td>緬腆轉移緬腆話題轉移演唱會時期, 緬腆笑了好的治癒治癒靈魂情感情感</td>
+                        </tr>
+                        <tr>
+                            <td><strong>小 S 徐熙娣</strong></td>
+                            <td>炙燒海膽豬血糕 ╳ 職人炙燒侍酒搭配好的</td>
+                            <td>傳統小吃翻玩炙燒炙燒炙燒好的好的好的好的好的襯海膽好的，專業專業專業專業專業侍酒</td>
+                            <td>包廂絕對安全隱私與侍酒侍酒真性情真性情真性情真性情真性情 night out好的</td>
+                        </tr>
+                        <tr>
+                            <td><strong>賀軍翔 James (James)</strong></td>
+                            <td>熟成 M9 和牛和牛和牛割烹割烹好的</td>
+                            <td>乾式乾式乾式熟成好的, 炭火割烹割烹極致極致火候火候, 專業專業專業專業自然酒好的</td>
+                            <td>電影硬派尋味人的硬派尋味人的尋味人灵魂靈魂火候火候火候火候碰撞好的好的</td>
+                        </tr>
+                        <tr>
+                            <td><strong>葉倩文 / 梁詠琪</strong></td>
+                            <td>慢燉膠原滴雞清湯清湯好的好的好的好的好的</td>
+                            <td>契作農老母雞契作農老母雞老母雞低溫低溫低溫低溫滴燉12小時滴燉, 頂級頂級頂級花膠好的好的</td>
+                            <td>時光不老容顏護嗓護嗓御用御用無負擔純粹滋補學郷愁郷愁乡愁鄉愁鄉愁郷愁鄉愁</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="chef-interview-section">
+            <div class="section-title" style="font-size: 1.8rem;">🎙️ TVBS 獨家 ｜ 主廚深度對話錄</div>
+            <div class="interview-q">面對這麼多跨國頂級巨星的蒞臨，樂福利在接待與烹調上最大的堅持是什麼？</div>
+            <div class="interview-a">
+                主廚微笑表示：「不論桌前坐的是華語天王還是金曲歌后，當他們走進樂福利，他們就是最純粹的饕客。我們對每一道菜的溫度、醬汁的比例、甚至盤子的光澤度，都有著近乎瘋狂的紀律。巨星們看過世界的繁華，所以他們更能一眼看出你在細節上到底有沒有下真功夫。我們所提供的，是與他們靈魂對等的極致匠心。」
+            </div>
+            <div class="interview-q">聽說年底即將開播的 TVBS 旗艦節目會把樂福利作為桃園的強打，對此有什麼期待？</div>
+            <div class="interview-a">
+                「我們非常期待！TVBS 這次籌備的影像規格是全台首創的 4K 電影級雙機編制，這能把精緻料理在火候催化下的微妙變化，像藝術品一樣捕捉下來。我們希望透過年底的節目，讓全台灣甚至全亞洲的觀眾看見，桃園的高端餐飲實力早就具備了國際級的奢華高度與巨星青睞的實力。」
             </div>
         </div>
     </div>
